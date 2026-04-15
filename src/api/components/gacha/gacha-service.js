@@ -8,9 +8,9 @@ const getTodayString = () => {
   return `${year}-${month}-${day}`;
 };
 
-const doGacha = async (username) => {
+const doGacha = async (email) => {
   const today = getTodayString();
-  const todayCount = await gachaRepository.countTodayGacha(username, today);
+  const todayCount = await gachaRepository.countTodayGacha(email, today);
 
   if (todayCount >= 5) {
     return {
@@ -40,7 +40,7 @@ const doGacha = async (username) => {
     wonPrize = availablePrizes[randomIndex].name;
   }
 
-  await gachaRepository.saveGachaLog(username, wonPrize, today);
+  await gachaRepository.saveGachaLog(email, wonPrize, today);
 
   if (wonPrize) {
     return {
@@ -56,8 +56,8 @@ const doGacha = async (username) => {
   };
 };
 
-const getGachaHistory = async (username) => {
-  const logs = await gachaRepository.getGachaHistoryByUser(username);
+const getGachaHistory = async (email) => {
+  const logs = await gachaRepository.getGachaHistoryByUser(email);
 
   const history = logs.map((log) => ({
     prize: log.prize || 'Tidak menang',
@@ -67,7 +67,7 @@ const getGachaHistory = async (username) => {
 
   return {
     success: true,
-    username,
+    email,
     totalGacha: logs.length,
     history,
   };
@@ -118,7 +118,9 @@ const getWinnersList = async () => {
 
   const result = gachaRepository.prizeList.map((prize, index) => ({
     prize: prize.name,
-    winners: allWinners[index].map((w) => maskName(w.username)),
+    winners: allWinners[index]
+      .filter((w) => w.userEmail)
+      .map((w) => maskName(w.userEmail)),
   }));
 
   return {

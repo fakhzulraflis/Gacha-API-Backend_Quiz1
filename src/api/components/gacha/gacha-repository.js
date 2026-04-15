@@ -1,4 +1,4 @@
-const { GachaLog } = require('../../../models');
+const { Gacha } = require('../../../models');
 
 const prizeList = [
   { name: 'Emas 10 gram', quota: 1 },
@@ -8,14 +8,14 @@ const prizeList = [
   { name: 'Pulsa Rp50.000', quota: 500 },
 ];
 
-const countTodayGacha = async (username, today) => {
-  const count = await GachaLog.countDocuments({ username, gachaDate: today });
+const countTodayGacha = async (userEmail, today) => {
+  const count = await Gacha.countDocuments({ userEmail, gachaDate: today });
   return count;
 };
 
-const saveGachaLog = async (username, prize, today) => {
-  const log = new GachaLog({
-    username,
+const saveGachaLog = async (userEmail, prize, today) => {
+  const log = new Gacha({
+    userEmail,
     prize,
     gachaDate: today,
   });
@@ -24,17 +24,17 @@ const saveGachaLog = async (username, prize, today) => {
 };
 
 const countPrizeWinners = async (prizeName) => {
-  const count = await GachaLog.countDocuments({ prize: prizeName });
+  const count = await Gacha.countDocuments({ prize: prizeName });
   return count;
 };
 
-const getGachaHistoryByUser = async (username) => {
-  const logs = await GachaLog.find({ username }).sort({ createdAt: -1 });
+const getGachaHistoryByUser = async (userEmail) => {
+  const logs = await Gacha.find({ userEmail }).sort({ createdAt: -1 });
   return logs;
 };
 
 const getWinnersByPrize = async (prizeName) => {
-  const logs = await GachaLog.find({ prize: prizeName }).select('username');
+  const logs = await Gacha.find({ prize: prizeName }).select('userEmail');
   return logs;
 };
 

@@ -1,78 +1,50 @@
 const gachaService = require('./gacha-service');
 
 // controller untuk endpoint gacha utama
-const gacha = async (req, res) => {
+async function gacha(request, response, next) {
   try {
-    // Ini buat ngambil username dari body request.
-    const { username } = req.body;
+    const { email } = request.user;
 
-    if (!username) {
-      return res.status(400).json({
-        success: false,
-        message: 'Usernamenya diisi dulu ya di body request',
-      });
-    }
-
-    const result = await gachaService.doGacha(username);
+    const result = await gachaService.doGacha(email);
 
     if (!result.success) {
-      return res.status(429).json(result);
+      return response.status(429).json(result);
     }
 
-    return res.status(200).json(result);
+    return response.status(200).json(result);
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Server error',
-    });
+    return next(error);
   }
-};
+}
 
-const getHistory = async (req, res) => {
+async function getHistory(request, response, next) {
   try {
-    // username diambil dari query param, contoh: /gacha/history?username=fakhzul
-    const { username } = req.query;
+    const { email } = request.user;
 
-    if (!username) {
-      return res.status(400).json({
-        success: false,
-        message: 'Username harus diisi di query param ya',
-      });
-    }
-
-    const result = await gachaService.getGachaHistory(username);
-    return res.status(200).json(result);
+    const result = await gachaService.getGachaHistory(email);
+    return response.status(200).json(result);
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Server error',
-    });
+    return next(error);
   }
-};
+}
 
-const getPrizes = async (req, res) => {
+async function getPrizes(request, response, next) {
   try {
     const result = await gachaService.getPrizeList();
-    return res.status(200).json(result);
+    return response.status(200).json(result);
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Server error',
-    });
+    return next(error);
   }
-};
+}
 
-const getWinners = async (req, res) => {
+async function getWinners(request, response, next) {
   try {
     const result = await gachaService.getWinnersList();
-    return res.status(200).json(result);
+    return response.status(200).json(result);
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Server error',
-    });
+    return next(error);
   }
-};
+}
 
 module.exports = {
   gacha,

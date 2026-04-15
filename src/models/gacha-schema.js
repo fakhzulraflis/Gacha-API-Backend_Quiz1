@@ -1,9 +1,9 @@
 module.exports = (db) =>
   db.model(
-    'GachaLog',
+    'Gacha',
     db.Schema(
       {
-        username: {
+        userEmail: {
           type: String,
           required: true,
         },
