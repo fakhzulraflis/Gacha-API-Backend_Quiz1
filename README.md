@@ -174,10 +174,9 @@ Setelah menerima kode token, token tersebut perlu di copy dan diisi pada bagian 
    }
    ```
 
-   | Method | Endpoint | Description |
-|--------|--------|------------|
-| POST | /tweets | Create tweet |
-| GET | /tweets/search/recent | Get recent tweets |
-| POST | /tweets | Create tweet |
-| POST | /tweets | Create tweet |
-| POST | /tweets | Create tweet |
+| Method | Endpoint | Descriptions |
+|:--------|:------:|------:|
+| Markdown editing | Active | Monaco-powered |
+| Live preview | Active | Scroll-synced |
+| Cloud sync | Available | 5 providers |
+| PDF export | Available | Server-rendered 
