@@ -173,3 +173,11 @@ Setelah menerima kode token, token tersebut perlu di copy dan diisi pada bagian 
      ]
    }
    ```
+
+   | Method | Endpoint | Description |
+|--------|--------|------------|
+| POST | /tweets | Create tweet |
+| GET | /tweets/search/recent | Get recent tweets |
+| POST | /tweets | Create tweet |
+| POST | /tweets | Create tweet |
+| POST | /tweets | Create tweet |
