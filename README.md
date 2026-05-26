@@ -173,14 +173,18 @@ Setelah menerima kode token, token tersebut perlu di copy dan diisi pada bagian 
        {
          "prize": "Pulsa Rp100.000",
          "winners": ["fa*h*u*S"]
+       },
+       {
+         "prize": "Pulsa Rp150.000",
+         "winners": ["fa*h*u*S"]
        }
      ]
    }
    ```
 
-| Method | Endpoint | Descriptions |
-|:--------|:------:|------:|
-| Markdown editing | Active | Monaco-powered |
-| Live preview | Active | Scroll-synced |
-| Cloud sync | Available | 5 providers |
-| PDF export | Available | Server-rendered 
+| Method           | Endpoint  |    Descriptions |
+| :--------------- | :-------: | --------------: |
+| Markdown editing |  Active   |  Monaco-powered |
+| Live preview     |  Active   |   Scroll-synced |
+| Cloud sync       | Available |     5 providers |
+| PDF export       | Available | Server-rendered |
