@@ -177,3 +177,10 @@ Setelah menerima kode token, token tersebut perlu di copy dan diisi pada bagian 
      ]
    }
    ```
+
+| Method | Endpoint | Descriptions |
+|:--------|:------:|------:|
+| Markdown editing | Active | Monaco-powered |
+| Live preview | Active | Scroll-synced |
+| Cloud sync | Available | 5 providers |
+| PDF export | Available | Server-rendered 
