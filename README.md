@@ -169,6 +169,10 @@ Setelah menerima kode token, token tersebut perlu di copy dan diisi pada bagian 
        {
          "prize": "Pulsa Rp50.000",
          "winners": ["fa*h*u*S"]
+       },
+       {
+         "prize": "Pulsa Rp100.000",
+         "winners": ["fa*h*u*S"]
        }
      ]
    }
